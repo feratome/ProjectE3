@@ -17,11 +17,17 @@ public class ThrowBall : MonoBehaviour
     [SerializeField] private bool FollowHand;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
+        GetComponent<XRGrabInteractable>().enabled = true;
+        rb.useGravity = true;
+        rb.isKinematic = false;
+        rb.velocity = Vector3.zero;
         isThrown = false;
+        StoredHandTransform = null;
         isHandSet = false;
         Direction = Vector3.zero;
+
     }
 
     // Update is called once per frame
@@ -44,6 +50,15 @@ public class ThrowBall : MonoBehaviour
         {
             rb.useGravity = true;
         }
+
+        if(collision.gameObject.tag.Equals("Target"))
+        {
+            Debug.Log("YES");
+            Start();
+            GetComponent<XRGrabInteractable>().enabled = false;
+            rb.useGravity = false;
+        }
+
         NotThrow();
         StoredHandTransform = null;
         Direction = Vector3.zero;
@@ -74,5 +89,15 @@ public class ThrowBall : MonoBehaviour
         {
             isHandSet = false;
         }
+    }
+
+    public void Respawn()
+    {
+        GetComponent<Collider>().enabled = true;
+        rb.useGravity = true;
+        isThrown = false;
+        StoredHandTransform = null;
+        isHandSet = false;
+        Direction = Vector3.zero;
     }
 }

@@ -5,19 +5,20 @@ using UnityEngine;
 public class BallRespawner : MonoBehaviour
 {
     
-    public GameObject ballPrefab;
+    public GameObject Respawnable;
     public Transform respawnPoint;
-    private GameObject currentBall;
 
-    private void Start(){
-
-    currentBall = Instantiate(ballPrefab, respawnPoint.position, Quaternion.identity);
+    private void Start()
+    {
 
     }
 
     public void RespawnBall()
-{
-    Destroy(currentBall);
-    currentBall = Instantiate(ballPrefab, respawnPoint.position, Quaternion.identity);
-}
+    {
+        ThrowBall tb = Respawnable.GetComponent<ThrowBall>();
+        if(tb != null) tb.Start();
+
+        Respawnable.transform.position = respawnPoint.position;
+
+    }
 }

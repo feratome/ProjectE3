@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TriggerDoorController : MonoBehaviour
+public class TriggerBallController : MonoBehaviour
 {
     public GameObject door;
 
@@ -19,26 +19,27 @@ public class TriggerDoorController : MonoBehaviour
         basePos = door.transform.position;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.tag.Equals("Ball"))
         {
             //myMaterial.color = Color.green;
             a= true;
         }
     }
-    private void OnTriggerStay(Collider other)
+
+    private void OnCollisionStay(Collision other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.tag.Equals("Ball"))
         {   
             //myMaterial.color = Color.green;
             a= true;
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.tag.Equals("Ball"))
         {
             //myMaterial.color = Color.red;
             a= false;
