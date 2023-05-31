@@ -4,9 +4,9 @@ public class TriggerBallController : MonoBehaviour
 {
     public GameObject door;
 
-    private float smoothTime = 0.2f; 
-    public float speed ;
-    Vector3 velocity;
+    private float smoothTime = 0.2f;
+    [SerializeField] private float speed ;
+    private Vector3 velocity;
     public bool a = false;
 
     [SerializeField] private  Vector3 basePos;

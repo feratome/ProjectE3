@@ -19,16 +19,6 @@ public class Bouncer : MonoBehaviour
 
     }
 
-    private void OnCollisionStay(Collision collision)
-    {
-        if(collision.gameObject.tag.Equals("Ball"))
-        {
-            Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
-
-            if(rb != null)
-            {
-                rb.velocity = Direction * BouncingForce * Time.deltaTime;
-            }
-        }
-    }
+    public Vector3 getDirection() { return Direction; }
+    public float getBouncingForce() { return BouncingForce; }
 }
