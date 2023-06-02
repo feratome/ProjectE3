@@ -28,28 +28,34 @@ public class Teleport : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
 	{
-		Debug.Log("TRIGGER");
+
 		if (other.CompareTag("Player"))
 		{
-			Debug.Log(other.gameObject.name);
+
 			perso.transform.position = perso.transform.position + move;
 			fs.ChangeColor(40f,155f,0);
 			fs.FadeIn();
 
             IsUnderworld = !IsUnderworld;
+            currentTime = startingTime;
+            
+            
 			
 		}
-
-        if(!IsUnderworld){
+    }
+    private void Update(){
+        if(IsUnderworld==false){
             // Desactiver le timer
+            Debug.Log("desac timer");
             sliderCanvasGroup.alpha = 0;
             myUIGroup.alpha = 0;
             currentTime = 10f;
 
         }else{
-            currentTime = startingTime;
+            Debug.Log("est autre monde");
             //verifier si le tiemer se fini
             if(currentTime <= 0f){
+            Debug.Log("perso est mort");
             //countDownText.text = "";
             sliderCanvasGroup.alpha = 0;
             myUIGroup.alpha = 0;
@@ -57,8 +63,10 @@ public class Teleport : MonoBehaviour
 			perso.transform.position = new Vector3(48.6100006f,5.23999977f,120.900002f);
 			fs.ChangeColor(40f,155f,0);
 			fs.FadeIn();
+            IsUnderworld =!IsUnderworld;
 
             }else{
+            Debug.Log("hi");
             sliderCanvasGroup.alpha = 1;
             myUIGroup.alpha = 1;
             
