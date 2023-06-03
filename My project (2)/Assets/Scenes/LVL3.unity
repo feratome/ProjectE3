@@ -15898,7 +15898,7 @@ MonoBehaviour:
   Direction: {x: 0, y: 0, z: 0}
   ThrowSpeed: 350
   FollowHand: 0
-  line: {fileID: 0}
+  line: {fileID: 465280573}
 --- !u!135 &2017177881
 SphereCollider:
   m_ObjectHideFlags: 0
