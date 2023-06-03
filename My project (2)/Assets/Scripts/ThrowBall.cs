@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -7,7 +8,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class ThrowBall : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
-    
+
     [SerializeField] private bool isThrown;
     [SerializeField] private Transform StoredHandTransform;
     [SerializeField] private bool isHandSet;
@@ -15,6 +16,8 @@ public class ThrowBall : MonoBehaviour
 
     [SerializeField] private float ThrowSpeed;
     [SerializeField] private bool FollowHand;
+
+    [SerializeField] private LineRenderer line;
 
     // Start is called before the first frame update
     public void Start()
@@ -27,6 +30,7 @@ public class ThrowBall : MonoBehaviour
         StoredHandTransform = null;
         isHandSet = false;
         Direction = Vector3.zero;
+        line.enabled = false;
 
     }
 
@@ -37,7 +41,7 @@ public class ThrowBall : MonoBehaviour
         {
             if (StoredHandTransform != null)
             {
-                if(FollowHand) rb.velocity = StoredHandTransform.forward * ThrowSpeed * Time.deltaTime;
+                if (FollowHand) rb.velocity = StoredHandTransform.forward * ThrowSpeed * Time.deltaTime;
                 else rb.velocity = Direction * ThrowSpeed * Time.deltaTime;
             }
             else rb.velocity = Vector3.zero;
@@ -46,32 +50,37 @@ public class ThrowBall : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(!collision.gameObject.tag.Equals("Bouncer"))
-        {
-            rb.useGravity = true;
-        }
+        Start();
 
-        if(collision.gameObject.tag.Equals("Target"))
+        if (collision.gameObject.tag.Equals("Bouncer"))
         {
-            Debug.Log("YES");
-            Start();
+            rb.useGravity = false;
+
+            Bouncer bouncer = collision.gameObject.GetComponent<Bouncer>();
+            if (bouncer != null) rb.velocity = bouncer.getDirection() * bouncer.getBouncingForce() * Time.deltaTime;
+        }
+        else if (collision.gameObject.tag.Equals("Target"))
+        {
             GetComponent<XRGrabInteractable>().enabled = false;
             rb.useGravity = false;
         }
-
-        NotThrow();
-        StoredHandTransform = null;
-        Direction = Vector3.zero;
     }
 
     public void Throw()
     {
         isThrown = true;
         if (StoredHandTransform != null && !FollowHand) Direction = StoredHandTransform.forward;
+        line.enabled = false;
     }
     public void NotThrow()
     {
         isThrown = false;
+        line.enabled = true;
+    }
+
+    public void ResetRotation()
+    {
+        transform.rotation = Quaternion.identity;
     }
 
     private void OnTriggerStay(Collider other)
@@ -89,15 +98,5 @@ public class ThrowBall : MonoBehaviour
         {
             isHandSet = false;
         }
-    }
-
-    public void Respawn()
-    {
-        GetComponent<Collider>().enabled = true;
-        rb.useGravity = true;
-        isThrown = false;
-        StoredHandTransform = null;
-        isHandSet = false;
-        Direction = Vector3.zero;
     }
 }

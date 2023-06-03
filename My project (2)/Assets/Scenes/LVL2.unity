@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 92590761}
   - component: {fileID: 92590760}
   - component: {fileID: 92590759}
+  - component: {fileID: 92590763}
   m_Layer: 0
   m_Name: Dalle (1)
   m_TagString: Untagged
@@ -227,7 +228,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 92590757}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be18bf04b1bbdaf4d93091b7fff393d4, type: 3}
   m_Name: 
@@ -296,6 +297,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 92590757}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &92590763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92590757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ce70ee0ea7ede4985d297e92e6d330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output: 0
+  Tags:
+  - Player
 --- !u!1 &105937638
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,7 +662,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35236
+  m_Name: pb_Mesh211168
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -810,7 +826,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35296
+  m_Name: pb_Mesh211228
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1368,7 +1384,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &284720367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1593,7 +1609,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4493276202459879032, guid: 7369c55e81d759a47a9d2414698f9550, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4493276202459879033, guid: 7369c55e81d759a47a9d2414698f9550, type: 3}
       propertyPath: m_IsTrigger
@@ -1651,7 +1667,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35324
+  m_Name: pb_Mesh211256
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1824,6 +1840,7 @@ GameObject:
   - component: {fileID: 451742275}
   - component: {fileID: 451742274}
   - component: {fileID: 451742273}
+  - component: {fileID: 451742280}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Untagged
@@ -1846,6 +1863,8 @@ MonoBehaviour:
   pointA: {fileID: 1902706166}
   pointB: {fileID: 574257844}
   vitesse: 2
+  input: {fileID: 451742280}
+  alwaysActive: 0
 --- !u!64 &451742274
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2169,6 +2188,22 @@ Transform:
   m_Father: {fileID: 1527263886}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &451742280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451742272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4013723d894505140847dd79e78275b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  senders:
+  - {fileID: 1100999244}
+  enablingCount: 1
+  output: 0
 --- !u!1 &462739413
 GameObject:
   m_ObjectHideFlags: 0
@@ -2519,7 +2554,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35568
+  m_Name: pb_Mesh211502
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2683,7 +2718,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35626
+  m_Name: pb_Mesh211560
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2878,7 +2913,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35604
+  m_Name: pb_Mesh211538
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3042,7 +3077,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35526
+  m_Name: pb_Mesh211460
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3206,7 +3241,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35512
+  m_Name: pb_Mesh211446
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3741,7 +3776,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 1631940956}
-  myMaterial: {fileID: 0}
   speed: 10
   a: 0
   basePos: {x: 0, y: 0, z: 0}
@@ -3830,7 +3864,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35430
+  m_Name: pb_Mesh211362
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4040,7 +4074,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35376
+  m_Name: pb_Mesh211308
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4204,7 +4238,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35484
+  m_Name: pb_Mesh211416
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5005,6 +5039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TrackingType: 0
   m_UpdateType: 0
+  m_IgnoreTrackingState: 0
   m_PositionInput:
     m_UseReference: 0
     m_Action:
@@ -5059,6 +5094,18 @@ MonoBehaviour:
         m_Groups: 
         m_Action: Rotation
         m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_TrackingStateInput:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Tracking State Input
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: f97a0f5c-fbd5-4d9c-b52e-a70f7107e1e7
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 0}
   m_PositionAction:
@@ -6336,6 +6383,7 @@ GameObject:
   - component: {fileID: 1100999241}
   - component: {fileID: 1100999240}
   - component: {fileID: 1100999239}
+  - component: {fileID: 1100999244}
   m_Layer: 0
   m_Name: Dalle
   m_TagString: Untagged
@@ -6350,7 +6398,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1100999238}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be18bf04b1bbdaf4d93091b7fff393d4, type: 3}
   m_Name: 
@@ -6434,6 +6482,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1100999244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100999238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ce70ee0ea7ede4985d297e92e6d330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output: 0
+  Tags:
+  - Player
 --- !u!1 &1128668884
 GameObject:
   m_ObjectHideFlags: 0
@@ -7074,7 +7137,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 2007442645}
-  myMaterial: {fileID: 0}
   speed: 10
   a: 0
   basePos: {x: 0, y: 0, z: 0}
@@ -7157,6 +7219,7 @@ GameObject:
   - component: {fileID: 1271648079}
   - component: {fileID: 1271648078}
   - component: {fileID: 1271648077}
+  - component: {fileID: 1271648084}
   m_Layer: 0
   m_Name: Platform2
   m_TagString: Untagged
@@ -7179,6 +7242,8 @@ MonoBehaviour:
   pointA: {fileID: 1055521923}
   pointB: {fileID: 312027202}
   vitesse: 2
+  input: {fileID: 1271648084}
+  alwaysActive: 0
 --- !u!64 &1271648078
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7502,13 +7567,29 @@ Transform:
   m_Father: {fileID: 1764811727}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1271648084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271648076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4013723d894505140847dd79e78275b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  senders:
+  - {fileID: 92590763}
+  enablingCount: 1
+  output: 0
 --- !u!43 &1365788177
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35540
+  m_Name: pb_Mesh211474
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11247,8 +11328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 496206fc3e70ffd48826c2d64e95e620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: {x: 0, y: 0, z: 0}
-  perso: {fileID: 0}
+  move: {x: 60, y: 1, z: 0}
   fs: {fileID: 0}
 --- !u!65 &1723128099
 BoxCollider:
@@ -11326,7 +11406,7 @@ GameObject:
   - component: {fileID: 1729086985}
   - component: {fileID: 1729086984}
   m_Layer: 0
-  m_Name: FaaderScreen
+  m_Name: FaderScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13859,7 +13939,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35280
+  m_Name: pb_Mesh211212
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14049,8 +14129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 496206fc3e70ffd48826c2d64e95e620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: {x: 0, y: 0, z: 0}
-  perso: {fileID: 0}
+  move: {x: -60, y: 1, z: 0}
   fs: {fileID: 0}
 --- !u!65 &2075679364
 BoxCollider:
@@ -14136,7 +14215,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35218
+  m_Name: pb_Mesh211150
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Teleport : MonoBehaviour
 {
     [SerializeField] private Vector3 move;
-    [SerializeField] private GameObject perso;
+    //[SerializeField] private GameObject perso;
     
 	[SerializeField] private FadeScreen fs;
 
@@ -18,9 +18,12 @@ public class Teleport : MonoBehaviour
 		if (other.CompareTag("Player"))
 		{
 			Debug.Log(other.gameObject.name);
-			perso.transform.position = perso.transform.position + move;
-			fs.ChangeColor(40f,155f,0);
-			fs.FadeIn();
+			other.transform.position = other.transform.position + move;
+			if(fs != null)
+			{
+                fs.ChangeColor(10f, 100f, 0);
+                fs.FadeIn();
+            }
 		}
 	}
 }
