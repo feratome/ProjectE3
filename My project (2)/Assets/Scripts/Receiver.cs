@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.ProBuilder.MeshOperations;
 using UnityEngine.ProBuilder.Shapes;
 
 public class Receiver : MonoBehaviour
@@ -10,6 +11,14 @@ public class Receiver : MonoBehaviour
     private int currentCount;
 
     public bool output;
+
+    private enum LogicMode
+    {
+        AND,
+        OR,
+        XOR
+    }
+    [SerializeField] LogicMode mode;
 
     // Start is called before the first frame update
     void Start()
@@ -25,5 +34,8 @@ public class Receiver : MonoBehaviour
         foreach (Sender sender in senders) if(sender.output) currentCount++;
 
         output = (currentCount >= enablingCount);
+        if (mode == LogicMode.AND) { output = (currentCount >= enablingCount); }
+        else if (mode == LogicMode.OR) { output = (currentCount >= 0); }
+        else if(mode == LogicMode.XOR) {  output = (currentCount%2 == 1); }
     }
 }
