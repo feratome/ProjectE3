@@ -12,7 +12,7 @@ public class TriggerDoorController : MonoBehaviour
     [SerializeField] private  Vector3 basePos;
     [SerializeField] private Vector3 move;
 
-    
+
 
     private void Start()
     {
@@ -30,7 +30,7 @@ public class TriggerDoorController : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
-        {   
+        {
             //myMaterial.color = Color.green;
             a= true;
         }
@@ -52,8 +52,8 @@ public class TriggerDoorController : MonoBehaviour
             door.transform.position = Vector3.SmoothDamp(door.transform.position, basePos+move, ref velocity, smoothTime,speed);
         }
         else
-        {   
-            door.transform.position = Vector3.SmoothDamp(door.transform.position, basePos, ref velocity, smoothTime,speed);            
+        {
+            door.transform.position = Vector3.SmoothDamp(door.transform.position, basePos, ref velocity, smoothTime,speed);
         }
 
     }
