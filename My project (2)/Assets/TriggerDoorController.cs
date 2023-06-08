@@ -3,36 +3,24 @@ using UnityEngine;
 public class TriggerDoorController : MonoBehaviour
 {
     public GameObject door;
+    private bool Istriggered = false;
+    private bool IsNotTriggered = false;
+    [SerializeField] private Material myMaterial;
 
+    public Vector3 targetPosition;
+    public Vector3 targetPosition2;
     private float smoothTime = 0.2f; 
-    public float speed ;
+    public float speed = 10;
     Vector3 velocity;
-    public bool a = false;
-
-    [SerializeField] private  Vector3 basePos;
-    [SerializeField] private Vector3 move;
-
-
-
-    private void Start()
-    {
-        basePos = door.transform.position;
-    }
+    public int a;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            //myMaterial.color = Color.green;
-            a= true;
-        }
-    }
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            //myMaterial.color = Color.green;
-            a= true;
+            Istriggered=true;
+            myMaterial.color = Color.green;
+            a=1;
         }
     }
 
@@ -40,20 +28,21 @@ public class TriggerDoorController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //myMaterial.color = Color.red;
-            a= false;
+            IsNotTriggered=true;
+            myMaterial.color = Color.red;
+            a=0;
         }
     }
 
     private void Update()
     {
-        if(a)
-        {
-            door.transform.position = Vector3.SmoothDamp(door.transform.position, basePos+move, ref velocity, smoothTime,speed);
+        if(Istriggered && a == 1){
+            door.transform.position = Vector3.SmoothDamp(door.transform.position, targetPosition, ref velocity, smoothTime, speed);
+            //Istriggered=false;
         }
-        else
-        {
-            door.transform.position = Vector3.SmoothDamp(door.transform.position, basePos, ref velocity, smoothTime,speed);
+        if(IsNotTriggered && a==0){
+            door.transform.position = Vector3.SmoothDamp(door.transform.position, targetPosition2, ref velocity, smoothTime, speed);
+            //IsNotTriggered=false;
         }
 
     }
