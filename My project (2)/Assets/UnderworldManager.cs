@@ -10,7 +10,7 @@ public class UnderworldManager : MonoBehaviour
 {
     [SerializeField] private Vector3 respawnpoint;
 	[SerializeField] private FadeScreen fs;
-    [SerializeField] private bool IsUnderworld;
+    private bool IsUnderworld;
     [SerializeField] private XRBaseInteractor[] hands = new XRBaseInteractor[2];
     [SerializeField] private Light playerLight; 
 
