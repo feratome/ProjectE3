@@ -8,6 +8,7 @@ TagManager:
   - Ball
   - Bouncer
   - Target
+  - Teleporter
   layers:
   - Default
   - TransparentFX

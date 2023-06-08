@@ -8428,7 +8428,6 @@ GameObject:
   - component: {fileID: 4391874956586076449}
   - component: {fileID: 4391874956586076448}
   - component: {fileID: 4391874956586076451}
-  - component: {fileID: 4391874956586076450}
   - component: {fileID: 4391874956586076453}
   m_Layer: 0
   m_Name: Plate
@@ -8761,24 +8760,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &4391874956586076450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4391874956586076452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9198b34b204a3364ea4663bc6ff00de1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  door: {fileID: 0}
-  myMaterial: {fileID: 2100000, guid: 8a8c43dbcfaf50046a6ad3957a28fd70, type: 2}
-  targetPosition: {x: -1.5354011, y: 9.66, z: 1.7424717}
-  targetPosition2: {x: -1.5354011, y: 3.2000003, z: 1.7424717}
-  speed: 10
-  a: 0
 --- !u!65 &4391874956586076453
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12744,7 +12725,7 @@ MonoBehaviour:
   crosshairSprite: {fileID: 0}
   cameraPerspective: 0
   automaticallySwitchPerspective: 0
-  perspectiveSwitchingKey_L: 0
+  perspectiveSwitchingKey: 31
   mouseInputInversion: 0
   Sensitivity: 8
   rotationWeight: 3
@@ -12767,9 +12748,9 @@ MonoBehaviour:
   sprintingSpeed: 240
   crouchingSpeed: 45
   decelerationSpeed: 240
-  sprintKey_L: 304
-  crouchKey_L: 306
-  slideKey_L: 118
+  sprintKey: 51
+  crouchKey: 55
+  slideKey: 36
   canSprint: 1
   isSprinting: 0
   toggleSprint: 0
@@ -12794,7 +12775,7 @@ MonoBehaviour:
   holdJump: 0
   jumpEnhancements: 0
   Jumped: 0
-  jumpKey_L: 32
+  jumpKey: 1
   jumpPower: 40
   airControlFactor: 1
   decentMultiplier: 2.5
@@ -12858,7 +12839,7 @@ MonoBehaviour:
     hasLowHealth: 0
     isStarving: 0
     isDehydrated: 0
-  interactKey_L: 101
+  interactKey: 19
   interactRange: 2.4
   interactableLayer:
     serializedVersion: 2
