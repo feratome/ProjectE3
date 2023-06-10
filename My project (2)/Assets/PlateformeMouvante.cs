@@ -1,17 +1,21 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlateformeMouvante : MonoBehaviour
 {
-    public Transform pointA; // Le point de départ
-    public Transform pointB; // Le point d'arrivée
-    public float vitesse = 5f; // La vitesse de déplacement
+    [SerializeField] private Vector3 pointA; // Le point de départ
+    [SerializeField] private Vector3 pointB; // Le point d'arrivée
+    [SerializeField] private float vitesse = 5f; // La vitesse de déplacement
 
     private Vector3 destination; // La destination actuelle
+
+    [SerializeField] private Receiver input;
+    [SerializeField] private bool alwaysActive;
 
     private void Start()
     {
         // Initialiser la destination au point A
-        destination = pointA.position;
+        destination = pointA;
     }
 
     private void Update()
@@ -22,17 +26,21 @@ public class PlateformeMouvante : MonoBehaviour
         // Si la distance est suffisamment petite, changer la destination
         if (distance < 0.01f)
         {
-            if (destination == pointA.position)
+            if (destination == pointA)
             {
-                destination = pointB.position;
+                destination = pointB;
             }
             else
             {
-                destination = pointA.position;
+                destination = pointA;
             }
         }
 
-        // Déplacer la plateforme vers la destination en utilisant une interpolation linéaire
-        transform.position = Vector3.MoveTowards(transform.position, destination, vitesse * 7*Time.deltaTime);
+        if (alwaysActive)
+        {
+            // Déplacer la plateforme vers la destination en utilisant une interpolation linéaire
+            transform.position = Vector3.MoveTowards(transform.position, destination, vitesse * 7 * Time.deltaTime);
+        }
+        else if (input != null) if (input.output) transform.position = Vector3.MoveTowards(transform.position, destination, vitesse * 7 * Time.deltaTime);
     }
 }
