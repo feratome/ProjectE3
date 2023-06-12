@@ -43,4 +43,20 @@ public class PlateformeMouvante : MonoBehaviour
         }
         else if (input != null) if (input.output) transform.position = Vector3.MoveTowards(transform.position, destination, vitesse * 7 * Time.deltaTime);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag.Equals("Player"))
+        {
+            collision.gameObject.transform.SetParent(transform);
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag.Equals("Player"))
+        {
+            collision.gameObject.transform.SetParent(null);
+        }
+    }
 }
