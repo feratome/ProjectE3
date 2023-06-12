@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Receiver.Primitives;
 
 public class PlateformeMouvante : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class PlateformeMouvante : MonoBehaviour
     [SerializeField] private Receiver input;
     [SerializeField] private bool alwaysActive;
 
+    [SerializeField] private float waitingTime;
+    private float currentTime;
+
     private void Start()
     {
         // Initialiser la destination au point A
@@ -20,12 +24,14 @@ public class PlateformeMouvante : MonoBehaviour
 
     private void Update()
     {
+        currentTime += Time.deltaTime;
         // Calculer la distance entre la position actuelle et la destination
         float distance = Vector3.Distance(transform.position, destination);
 
         // Si la distance est suffisamment petite, changer la destination
         if (distance < 0.01f)
         {
+            currentTime = 0;
             if (destination == pointA)
             {
                 destination = pointB;
@@ -36,27 +42,14 @@ public class PlateformeMouvante : MonoBehaviour
             }
         }
 
-        if (alwaysActive)
+        if(currentTime > waitingTime)
         {
-            // Déplacer la plateforme vers la destination en utilisant une interpolation linéaire
-            transform.position = Vector3.MoveTowards(transform.position, destination, vitesse * 7 * Time.deltaTime);
-        }
-        else if (input != null) if (input.output) transform.position = Vector3.MoveTowards(transform.position, destination, vitesse * 7 * Time.deltaTime);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag.Equals("Player"))
-        {
-            collision.gameObject.transform.SetParent(transform);
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.tag.Equals("Player"))
-        {
-            collision.gameObject.transform.SetParent(null);
+            if (alwaysActive)
+            {
+                // Déplacer la plateforme vers la destination en utilisant une interpolation linéaire
+                transform.position = Vector3.MoveTowards(transform.position, destination, vitesse * 7 * Time.deltaTime);
+            }
+            else if (input != null) if (input.output) transform.position = Vector3.MoveTowards(transform.position, destination, vitesse * 7 * Time.deltaTime);
         }
     }
 }
