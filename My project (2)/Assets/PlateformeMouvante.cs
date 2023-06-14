@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Receiver.Primitives;
 
 public class PlateformeMouvante : MonoBehaviour
@@ -19,7 +20,7 @@ public class PlateformeMouvante : MonoBehaviour
     private void Start()
     {
         // Initialiser la destination au point A
-        destination = pointA;
+        destination = pointB;
     }
 
     private void Update()
@@ -46,10 +47,59 @@ public class PlateformeMouvante : MonoBehaviour
         {
             if (alwaysActive)
             {
-                // Déplacer la plateforme vers la destination en utilisant une interpolation linéaire
                 transform.position = Vector3.MoveTowards(transform.position, destination, vitesse * 7 * Time.deltaTime);
             }
-            else if (input != null) if (input.output) transform.position = Vector3.MoveTowards(transform.position, destination, vitesse * 7 * Time.deltaTime);
+            else if (input != null)
+            {
+                if (input.output)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, destination, vitesse * 7 * Time.deltaTime);
+                }
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.transform.name.Equals("XR Origin"))
+        {
+            collider.transform.SetParent(transform);
+        }
+    }
+
+    private void OnTriggerExit(Collider collider)
+    {
+        if (collider.transform.name.Equals("XR Origin"))
+        {
+            collider.transform.SetParent(null);
+        }
+    }
+
+    private IEnumerator Link(Collider collider)
+    {
+        while (collider.transform.parent != transform)
+        {
+            if (collider.transform.parent == null)
+            {
+                collider.transform.SetParent(transform);
+                break;
+            }
+
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    private IEnumerator Unlink(Collider collider)
+    {
+        while (collider.transform.parent != null)
+        {
+            if (collider.transform.parent == transform)
+            {
+                collider.transform.SetParent(null);
+                break;
+            }
+
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }

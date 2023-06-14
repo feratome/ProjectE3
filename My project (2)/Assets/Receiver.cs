@@ -6,8 +6,8 @@ using UnityEngine.ProBuilder.Shapes;
 
 public class Receiver : MonoBehaviour
 {
-    [SerializeField] private List<Sender> senders = new List<Sender>();
-    [SerializeField] private int enablingCount;
+    [SerializeField] public List<Sender> senders = new List<Sender>();
+    [SerializeField] public int enablingCount;
     private int currentCount;
 
     public bool output;
@@ -18,7 +18,7 @@ public class Receiver : MonoBehaviour
         OR,
         XOR
     }
-    [SerializeField] LogicMode mode;
+    [SerializeField] private LogicMode mode;
 
     // Start is called before the first frame update
     void Start()
