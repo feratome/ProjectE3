@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class CubeRespawner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
+    public GameObject Respawnable;
+    public Transform respawnPoint;
+    
 
-    // Update is called once per frame
-    void Update()
+
+    public void OnTriggerEnter()
     {
         
+        
+        Respawnable.transform.position = respawnPoint.position;
+
     }
 }

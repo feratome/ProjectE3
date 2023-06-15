@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.SceneManagement;
 
 public class UnderworldManager : MonoBehaviour
 {
@@ -85,7 +86,7 @@ public class UnderworldManager : MonoBehaviour
             myUIGroupPanel.alpha = InExpo((startingTime - currentTime)/startingTime);
             UISlider.value = currentTime/startingTime;
 
-            if(currentTime <= 0f) Start();
+            if(currentTime <= 0f) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
