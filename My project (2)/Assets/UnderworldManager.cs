@@ -47,7 +47,7 @@ public class UnderworldManager : MonoBehaviour
                 transform.position += move;
             }
             
-            fs.ChangeColor(40f,155f,0);
+            fs.ChangeColor(0,0,0);
 			fs.FadeIn();
 
             if(IsUnderworld)
