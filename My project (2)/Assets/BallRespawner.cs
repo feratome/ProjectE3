@@ -10,7 +10,7 @@ public class BallRespawner : MonoBehaviour
 
     private void Start()
     {
-
+        Respawnable.transform.position = respawnPoint.position;
     }
 
     public void RespawnBall()

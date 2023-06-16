@@ -30,7 +30,7 @@ public class Movable : MonoBehaviour
     {
         if (input.output)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, baseRotation * rotation, (smoothTime * speed) / (move.magnitude * 20));
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, (smoothTime * speed) / (move.magnitude * 20));
             transform.position = Vector3.SmoothDamp(transform.position, basePos + move, ref velocity, smoothTime, speed);
             source.PlayOneShot(doornoise);
         }

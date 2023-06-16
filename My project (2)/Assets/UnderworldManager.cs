@@ -9,7 +9,6 @@ using UnityEngine.SceneManagement;
 
 public class UnderworldManager : MonoBehaviour
 {
-    [SerializeField] private Vector3 respawnpoint;
 	[SerializeField] private FadeScreen fs;
     private bool IsUnderworld;
     [SerializeField] private XRBaseInteractor[] hands = new XRBaseInteractor[2];
@@ -29,9 +28,6 @@ public class UnderworldManager : MonoBehaviour
     private void Start()
     {
         ToOverworld();
-        foreach(XRBaseInteractor interactor in hands) interactor.enabled = false;
-        transform.position = respawnpoint;
-        foreach(XRBaseInteractor interactor in hands) interactor.enabled = true;
     }
 
 
@@ -47,7 +43,7 @@ public class UnderworldManager : MonoBehaviour
                 transform.position += move;
             }
             
-            fs.ChangeColor(40f,155f,0);
+            fs.ChangeColor(200f,255f,200f);
 			fs.FadeIn();
 
             if(IsUnderworld)

@@ -20,7 +20,7 @@ public class PlateformeMouvante : MonoBehaviour
     private void Start()
     {
         // Initialiser la destination au point A
-        destination = pointB;
+        destination = pointA;
     }
 
     private void Update()

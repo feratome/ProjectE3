@@ -59,11 +59,6 @@ public class ThrowBall : MonoBehaviour
             Bouncer bouncer = collision.gameObject.GetComponent<Bouncer>();
             if (bouncer != null) rb.velocity = bouncer.getDirection() * bouncer.getBouncingForce() * Time.deltaTime;
         }
-        else if (collision.gameObject.tag.Equals("Target"))
-        {
-            GetComponent<XRGrabInteractable>().enabled = false;
-            rb.useGravity = false;
-        }
     }
 
     public void Throw()
@@ -89,6 +84,12 @@ public class ThrowBall : MonoBehaviour
         {
             StoredHandTransform = other.transform;
             isHandSet = true;
+        }
+        else if (other.CompareTag("Target"))
+        {
+            Start();
+            GetComponent<XRGrabInteractable>().enabled = false;
+            rb.useGravity = false;
         }
     }
 
