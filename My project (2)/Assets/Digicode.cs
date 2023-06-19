@@ -23,7 +23,6 @@ public class Digicode : Receiver
     {
         isInput = false;
         foreach(Sender sender in digicodeInOrder) { if(sender.output) isInput = true; }
-        Debug.Log(isInput);
 
         if(isInput && !frontMontant) 
         {
@@ -44,8 +43,9 @@ public class Digicode : Receiver
     private IEnumerator Output()
     {
         output = true;
-        yield return new WaitForSeconds(timeActivated);
-        output = false;
+        //yield return new WaitForSeconds(timeActivated);
+        //output = false;
         correctInput = 0;
+        yield return null;
     }
 }
