@@ -41,6 +41,7 @@ public class UnderworldManager : MonoBehaviour
             {
                 Vector3 move = tp.getMove();
                 transform.position += move;
+                transform.rotation *= Quaternion.Euler(0f,180f,0f);
             }
             
             fs.ChangeColor(200f,255f,200f);
