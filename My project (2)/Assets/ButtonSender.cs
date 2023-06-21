@@ -14,11 +14,16 @@ public class ButtonSender : Sender
     {
         particle.Play();
         output = true;
+        
     }
 
     public void setOutputFalse()
     {
         particle.Stop();
         output = false;
+    }
+
+    public bool Returnoutput(){
+        return output;
     }
 }
