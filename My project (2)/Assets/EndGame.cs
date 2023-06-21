@@ -6,7 +6,7 @@ public class EndGame : MonoBehaviour
 {
     public GameObject objectToActivate;
     public Renderer fadeQuadRenderer;
-    public GameObject cube;
+    
     public float fadeDuration = 1f;
     public float visibleDuration = 5f;
     public Light pointLight; // Assigned light component
@@ -16,6 +16,14 @@ public class EndGame : MonoBehaviour
     private float currentFadeTime;
     private bool isFadingOut;
 
+    public GameObject playerObject;
+    public string scriptName = "Continuous Move Provider";
+    private MonoBehaviour scriptToDisable;
+
+    void start(){
+        scriptToDisable = playerObject.GetComponent(scriptName) as MonoBehaviour;
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !triggered)
@@ -59,7 +67,7 @@ public class EndGame : MonoBehaviour
         yield return new WaitForSeconds(visibleDuration);
 
         fadeQuadRenderer.material.color = targetColor;
-        cube.SetActive(true);
+        scriptToDisable.enabled = false;
         triggered = false;
     }
 }
