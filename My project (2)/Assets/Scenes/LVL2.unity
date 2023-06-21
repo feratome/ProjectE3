@@ -11941,6 +11941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: {x: -67, y: 0.2, z: 0}
+  turn: 1
 --- !u!65 &585914065
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14238,7 +14239,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a9bec445b198dd7458fcd489957a26b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -39434,6 +39435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: {x: 62, y: 0.2, z: 0}
+  turn: 1
 --- !u!65 &1612445476
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52014,7 +52016,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1921901897}
-  m_LocalRotation: {x: -0, y: 0.9643303, z: -0, w: 0.26470193}
+  m_LocalRotation: {x: -0, y: 0.891968, z: -0, w: -0.45209852}
   m_LocalPosition: {x: 180.12, y: 6.24, z: 58.92}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
@@ -52023,7 +52025,7 @@ Transform:
   - {fileID: 1706325604}
   m_Father: {fileID: 0}
   m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: 0, y: 149.301, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 233.757, z: 0}
 --- !u!43 &1930225893
 Mesh:
   m_ObjectHideFlags: 0

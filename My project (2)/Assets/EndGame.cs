@@ -6,7 +6,9 @@ public class EndGame : MonoBehaviour
 {
     public GameObject objectToActivate;
     public Renderer fadeQuadRenderer;
-    
+    public GameObject Xrorigin;
+    public GameObject camera;
+
     public float fadeDuration = 1f;
     public float visibleDuration = 5f;
     public Light pointLight; // Assigned light component
@@ -67,7 +69,9 @@ public class EndGame : MonoBehaviour
         yield return new WaitForSeconds(visibleDuration);
 
         fadeQuadRenderer.material.color = targetColor;
-        scriptToDisable.enabled = false;
+        Xrorigin.SetActive(false);
+        camera.SetActive(true);
+
         triggered = false;
     }
 }

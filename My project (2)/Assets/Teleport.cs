@@ -8,6 +8,8 @@ using System;
 public class Teleport : MonoBehaviour
 {
     [SerializeField] private Vector3 move;
+    [SerializeField] private bool turn;
     
     public Vector3 getMove() {return move;}
+    public bool getTurn() { return turn;}
 }
